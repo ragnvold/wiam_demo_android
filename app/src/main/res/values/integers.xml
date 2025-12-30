@@ -1,0 +1,13 @@
+<resources>
+    <integer name="loan_min_amount_usd">5000</integer>
+    <integer name="loan_max_amount_usd">50000</integer>
+    <integer name="loan_amount_step_usd">5000</integer>
+    <integer name="loan_apr_percent">15</integer>
+
+    <integer-array name="loan_allowed_terms_days">
+        <item>7</item>
+        <item>14</item>
+        <item>21</item>
+        <item>28</item>
+    </integer-array>
+</resources>

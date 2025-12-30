@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">wiam_demo</string>
+
+    <!-- Loan calculator -->
+    <string name="loan_amount_title">Amount</string>
+    <string name="loan_term_title">Term</string>
+    <string name="loan_submit_button">Submit loan application</string>
+
+    <string name="loan_currency_amount_format">USD %1$s</string>
+    <string name="loan_total_repayment_format">Total repayment: USD %1$s</string>
+    <string name="loan_due_date_format">Due date: %1$s</string>
+    <string name="loan_quote_title">Loan quote</string>
+    <string name="loan_apr_format">APR %1$.2f%%</string>
+
+    <string name="loan_snackbar_submitted">Application submitted</string>
+    <string name="loan_snackbar_submitted_with_id">Application submitted (id: %1$d)</string>
+
+    <!-- Validation -->
+    <string name="validation_amount_range_format">Amount must be between %1$d and %2$d</string>
+    <string name="validation_amount_whole">Amount must be a whole number</string>
+    <string name="validation_term_allowed">Term must be one of: 7, 14, 21, 28 days</string>
+    <string name="validation_wait_for_quote">Please wait until calculations are ready</string>
+</resources>

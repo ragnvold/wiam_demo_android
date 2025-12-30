@@ -1,0 +1,11 @@
+<resources>
+    <!-- Spacing -->
+    <dimen name="screen_padding_horizontal">16dp</dimen>
+    <dimen name="screen_padding_top">12dp</dimen>
+    <dimen name="section_padding">16dp</dimen>
+    <dimen name="section_spacing">12dp</dimen>
+    <dimen name="quote_item_spacing">6dp</dimen>
+
+    <!-- Elevation -->
+    <dimen name="card_elevation">2dp</dimen>
+</resources>
