@@ -5,10 +5,10 @@ import io.ktor.client.call.body
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.bodyAsText
+import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.http.isSuccess
 import kotlinx.serialization.Serializable
-import java.math.BigDecimal
 
 @Serializable
 data class LoanApplicationRequest(
@@ -45,7 +45,7 @@ class LoanApi(
     suspend fun submitLoanApplication(req: LoanApplicationRequest): ApiResult<LoanApplicationResponse> {
         return try {
             val response = client.post("$baseUrl/posts") {
-                contentType(io.ktor.http.ContentType.Application.Json)
+                contentType(ContentType.Application.Json)
                 setBody(req)
             }
             if (response.status.isSuccess()) {

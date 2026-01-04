@@ -31,17 +31,7 @@ class SubmitLoanApplicationMiddleware(
             LoanApplicationValidation.Valid -> Unit
         }
 
-        val quote = state.loanQuote ?: run {
-            dispatch(
-                LoanAction.SubmitFailed(
-                    message = "validation",
-                    cause = ValidationThrowable(
-                        LoanApplicationValidation.Invalid(R.string.validation_wait_for_quote)
-                    )
-                )
-            )
-            return
-        }
+        val quote = requireNotNull(state.loanQuote)
 
         dispatch(LoanAction.SubmitStarted)
 

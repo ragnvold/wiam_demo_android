@@ -35,6 +35,7 @@ class LoanCalculatorViewModel(
     init {
         val initial = store.state.value
         store.dispatch(LoanAction.LoanAmountChanged(initial.loanTerms.loanAmount))
+        restoreLastLoanApplication()
     }
 
     fun onAmountChanged(value: Float) {
@@ -57,7 +58,7 @@ class LoanCalculatorViewModel(
         store.dispatch(LoanAction.SubmitDismissSuccess)
     }
 
-    fun onRestoreLastLoanApplication() {
+    private fun restoreLastLoanApplication() {
         store.dispatch(LoanAction.RestoreLastLoanApplicationStarted)
     }
 }

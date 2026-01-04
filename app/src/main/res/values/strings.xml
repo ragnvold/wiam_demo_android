@@ -10,7 +10,7 @@
     <string name="loan_total_repayment_format">Total repayment: USD %1$s</string>
     <string name="loan_due_date_format">Due date: %1$s</string>
     <string name="loan_quote_title">Loan quote</string>
-    <string name="loan_apr_format">APR %1$.2f%%</string>
+    <string name="loan_apr_format">APR %1$s%%</string>
 
     <string name="loan_snackbar_submitted">Application submitted</string>
     <string name="loan_snackbar_submitted_with_id">Application submitted (id: %1$d)</string>

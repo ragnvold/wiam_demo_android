@@ -1,12 +1,14 @@
 package com.nparmenov.wiam_demo
 
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -18,6 +20,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -60,15 +63,13 @@ fun LoanCalculatorScreen(
         else -> null
     }
 
-    LaunchedEffect(Unit) {
-        viewModel.onRestoreLastLoanApplication()
-    }
-
     LaunchedEffect(state.submission, snackbarMessage) {
         val msg = snackbarMessage ?: return@LaunchedEffect
         snackbarHostState.showSnackbar(msg)
         viewModel.onSubmitDismissClicked()
     }
+
+    val scrollState = rememberSaveable(saver = ScrollState.Saver) { ScrollState(0) }
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
@@ -81,7 +82,9 @@ fun LoanCalculatorScreen(
                 .padding(padding)
         ) {
             Column(
-                modifier = modifier.padding(horizontal = dimensionResource(R.dimen.screen_padding_horizontal))
+                modifier = modifier
+                    .padding(horizontal = dimensionResource(R.dimen.screen_padding_horizontal))
+                    .verticalScroll(scrollState)
             ) {
                 Spacer(modifier = modifier.height(dimensionResource(R.dimen.screen_padding_top)))
 
@@ -107,7 +110,7 @@ fun LoanCalculatorScreen(
 
                 Button(
                     onClick = viewModel::onSubmitApplicationClicked,
-                    enabled = state.validation is LoanApplicationValidation.Valid && state.submission !is SubmissionState.Loading
+                    enabled = state.validation is LoanApplicationValidation.Valid && state.loanQuote != null && state.submission !is SubmissionState.Loading
                 ) {
                     Text(text = stringResource(R.string.loan_submit_button))
                 }

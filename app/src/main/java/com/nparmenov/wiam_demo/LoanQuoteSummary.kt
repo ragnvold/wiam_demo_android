@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import java.math.RoundingMode
 import java.text.DateFormat
 
 @Composable
@@ -38,7 +39,12 @@ fun LoanQuoteSummary(
             )
             Spacer(Modifier.height(dimensionResource(R.dimen.quote_item_spacing)))
             Text(
-                text = stringResource(R.string.loan_apr_format, quote.loanInterestPerPeriod),
+                text = stringResource(
+                    R.string.loan_apr_format,
+                    quote.loanInterestPerPeriod
+                        .setScale(2, RoundingMode.HALF_UP)
+                        .toPlainString()
+                ),
                 style = MaterialTheme.typography.bodyMedium
             )
             Spacer(Modifier.height(dimensionResource(R.dimen.quote_item_spacing)))
